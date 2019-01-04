@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	body,h2,div,img,ul,li{
+		padding: 0;
+		margin: 0;
+	}
+		body{
+			width: 1280px;
+			height: 720px;
+			/*overflow-y: hidden;*/
+			background: url(%!整个页面的背景图片/img!%) no-repeat;
+			color: #fff;
+			margin: 0 auto;
+			font-family: "方正兰亭"
+		}
+		#box{
+			width: 1040px;
+			margin: 0 auto;
+			position: relative;
+			top: 0;
+			left: 0
+		}
+		.item{
+			font-size: 48px;
+			padding-top: 37px;
+			margin-bottom: 37px;
+		}
+		ul li{
+			list-style: none;
+			float: left;
+		}
+		img{
+			width: 324px;
+			height: 240px;
+			border-radius: 8px;
+			margin: 10px;
+		}
+		li h2{
+			width: 324px;
+			font-size: 32px;
+			background-color: rgba(0,0,0,0.7);
+			border-radius: 8px;
+			text-align: center;
+			
+		} 
+		ul:after{
+			content: "";
+			display: block;
+			clear: both;
+			visibility: hidden;
+		}
+		.img1 h2{
+			position: absolute;
+			left: 10px;
+			top: 346px;
+		}
+		.img2 h2{
+			position: absolute;
+			left: 354px;
+			top: 346px;
+		}
+		.img3 h2{
+			position: absolute;
+			left: 698px;
+			top: 346px;
+		}
+		.img4 h2{
+			position: absolute;
+			left:10px;
+			top: 610px;
+		}
+		.img5 h2{
+			position: absolute;
+			left:354px;
+			top: 610px;
+		}
+		.img6 h2{
+			position: absolute;
+			left:698px;
+			top: 610px;
+		}
+		span{
+			font-size: 20px;
+			float: right;
+			margin-right: 134px;
+			font-family: "Microsoft YaHei"
+		}
+		.now{
+		box-shadow:orange 0px 0px 20px 5px ;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="box">
+		<h2 class="item">%!title/text!%</h2>
+		<div class="title">
+			<ul id="ul">
+				<li class="img1">
+					<img src="%!imgPath1/img!%" alt="" id="img1" class="now">
+					<h2>%!标题1/text!%</h2>
+				</li>
+				<li class="img2">
+					<img src="%!imgPath1/img!%" alt="" id="img2">
+					<h2>%!标题2/text!%</h2>
+				</li>
+				<li class="img3">
+					<img src="img/open.png" alt="" id="img3">
+					<h2>旅游热点</h2>
+				</li>
+				<li class="img4">
+					<img src="img/travel.png" alt="" id="img4">
+					<h2>三务公开</h2>
+				</li>
+				<li class="img5">
+					<img src="img/tel.png" alt="" id="img5">
+					<h2>党员播报</h2>
+				</li>
+				<li class="img6">
+					<img src="img/stu.png" alt="" id="img6">
+					<h2>党员学习</h2>
+				</li>
+			</ul>
+		</div>
+		<span>按返回键返回上一级</span>
+	</div>
+	<script src="">
+	var box=document.getElementById('box');
+	var list=document.getElementsByTagName("IMG");
+	var now=0;
+	document.onkeydown=function(e){
+		switch(e.keyCode){
+			case 37://左
+			now--;
+			if(now<0){
+				now=0;
+			}
+			break;
+			case 39://右
+			now++;
+			if(now>list.length){
+				now=list.length-1
+			}
+			break;
+			case 38://上
+	        now-=3;
+	        if(now<0){
+	          now+=3;
+	        }
+	        break;
+	        case 40://下
+	        now+=3;
+	        if(now>ul.length){
+	          now-=3;
+	        }
+	        break;
+			}
+			for(var i=0;i<list.length;i++){
+				list[i].className="";
+				if(i==now){
+					list[i].className+="now";
+
+				}
+				if(list[i].className=="now"){
+					if(list[i].id=="img1"){
+						if(e.keyCode=="13"){
+							window.open("constryside.html")
+						}
+					}if(list[i].id=="img2"){
+						if(e.keyCode=="13"){
+							window.open("news.html")
+						}
+					}
+					if(list[i].id=="img3"){
+						if(e.keyCode=="13"){
+							window.open("travl.html")
+						}
+					}
+					if(list[i].id=="img4"){
+						if(e.keyCode=="13"){
+							window.open("open.html")
+						}
+					}
+					if(list[i].id=="img5"){
+						if(e.keyCode=="13"){
+							window.open("tel.html")
+						}
+					}
+					if(list[i].id=="img6"){
+						if(e.keyCode=="13"){
+							window.open("stu.html")
+						}
+					}
+
+			}
+
+			}
+			if(e.keyCode=="27"){
+				window.close();
+			}
+
+		}
+	</script>
+</body> 
+</html>
